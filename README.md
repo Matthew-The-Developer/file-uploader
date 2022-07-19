@@ -16,7 +16,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] Create a transplant demo page
 - [ ] Create a mock transplant work item
 - [ ] Migrate the document attachment modal to this project
-- [ ] Look into 
+- [ ] Look into appending file select in the explorer instead of overwriting it
 
 ## Github Pages
 
@@ -38,7 +38,7 @@ Run `ng build --base-href "https://Matthew-The-Developer.github.io/file-uploader
 
 ## Deploy
 
-Run `npx angular-cli-ghpages --dir=dist/file-selector` to deploy the current build of the project to [GitHub Pages](https://matthew-the-developer.github.io/file-selector/).
+Run `npx angular-cli-ghpages --dir=dist/file-uploader` to deploy the current build of the project to [GitHub Pages](https://matthew-the-developer.github.io/file-selector/).
 
 ## Running unit tests
 
