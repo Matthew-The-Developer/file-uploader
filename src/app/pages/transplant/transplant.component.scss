@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  app-wrapper {
+    width: 95%;
+    margin: 1rem auto;
+  }
+}

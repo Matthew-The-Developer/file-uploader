@@ -1,0 +1,93 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Patient ID</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>First name</mat-label>
+      <input matInput>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput>
+    </mat-form-field></td>
+  </tr></table>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Kideny Stone Count</mat-label>
+    <input matInput>
+  </mat-form-field>
+</form>
+
+<div class="row">
+  <p class="mat-body-strong">{{ files.length }} Files Selected</p>
+
+  <span spacer></span>
+
+  <input #uploaderInput (change)="onFilesSelected($event)" type="file" multiple hidden>
+  <button 
+    (click)="uploaderInput.click()"
+    color="accent"
+    mat-button 
+  >
+    Select Files
+  </button>
+</div>
+
+<mat-divider></mat-divider>
+
+<mat-list>
+  <mat-list-item *ngFor="let file of files" class="file">
+    <div mat-line>
+      <span class="name">{{ file.name }}</span>
+      
+      <button [matMenuTriggerFor]="menu" mat-button>
+        {{ file.documentType }}
+        <mat-icon inline="true">arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button 
+          *ngFor="let type of medicalDocumentTypes"
+          (click)="setDocumentType(file, type)"
+          mat-menu-item
+        >
+          {{ type }}
+        </button>
+      </mat-menu>
+
+      <button 
+        (click)="remove(file)"
+        color="warn"
+        mat-icon-button 
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+
+  <mat-list-item *ngIf="files.length < 1" class="no-files">
+    <div mat-line>
+      <b class="mat-body-strong">No files currently selected</b>
+    </div>
+  </mat-list-item>
+</mat-list>
+
+<mat-divider></mat-divider>
+
+<div class="row actions">
+  <span spacer></span>
+
+  <button (click)="onCancel()" mat-stroked-button>
+    <mat-icon>close</mat-icon>
+    Cancel
+  </button>
+
+  <span spacer="16px"></span>
+
+  <button mat-flat-button color="primary">
+    <mat-icon>save</mat-icon>
+    Save
+  </button>
+</div>

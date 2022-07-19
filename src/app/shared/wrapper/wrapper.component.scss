@@ -1,0 +1,28 @@
+mat-card {
+  padding: 0;
+  border-radius: 0;
+
+  mat-toolbar {
+    height: 36px;
+    padding-right: unset;
+
+    .mat-subheading-1 {
+      margin-bottom: unset;
+    }
+  }
+
+  mat-drawer-container {
+    background: inherit;
+  
+    .content {
+      height: auto;
+      padding: 1rem;
+    }
+
+    mat-drawer {
+      padding: 1rem;
+      box-shadow: none;
+      border-left: 1px solid lightgray;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<mat-card [class.mat-elevation-z0]="isNested">
+  <mat-toolbar *ngIf="!isNested" color="primary">
+    <span class="mat-subheading-1">{{ title }}</span>
+
+    <span spacer></span>
+
+    <button (click)="close()" mat-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-card-content>
+    <mat-drawer-container
+      [style.height]="height"
+      hasBackdrop="false"
+    >
+      <div 
+        [style.width]="left"
+        class="content"
+      >
+        <ng-content select="[left]"></ng-content>
+      </div>
+  
+      <mat-drawer 
+        [style.width]="right"
+        [opened]="isOpen"
+        [mode]="mode"
+        position="end"
+        class="no-scroll"
+      >
+        <ng-content select="[right]"></ng-content>
+      </mat-drawer>
+    </mat-drawer-container>
+  </mat-card-content>
+
+</mat-card>

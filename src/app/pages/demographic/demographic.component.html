@@ -1,0 +1,58 @@
+<app-wrapper
+  [isOpen]="isOpen"
+  [leftWidth]="100"
+  [rightWidth]="40"
+  title="Kidney Stone Count"
+>
+  <div left>
+    <div class="row">
+      <span spacer></span>
+
+      <button (click)="open()" mat-stroked-button color="accent">
+        <mat-icon>add</mat-icon>
+        Add Count
+      </button>
+    </div>
+
+    <mat-table [dataSource]="dataSource">
+      <ng-container *ngFor="let column of columns" [matColumnDef]="column.name">
+        <mat-header-cell [style.flex]="width(column.width)" mat-header-cell *matHeaderCellDef>{{ column.label }}</mat-header-cell>
+        <mat-cell [style.flex]="width(column.width)" mat-cell *matCellDef="let element">{{ element[column.name] | dynamic: column.pipe:column.pipeArgs}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef [style.flex]="width('9%')" class="center"> Actions </mat-header-cell>
+        <mat-cell [style.flex]="width('9%')" *matCellDef="let element">
+          <button mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button>
+            <mat-icon 
+              [matBadgeHidden]="element.hasDocuments"
+              [matTooltipDisabled]="element.hasDocuments"
+              matTooltipClass="example-tooltip-red"
+              matTooltip="Missing Documents"
+              matBadgeColor="warn" 
+              matBadgeSize="small"
+              matBadge="!"
+            >
+              attach_file
+            </mat-icon>
+          </button>
+
+          <button mat-icon-button>
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="names"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: names;"></mat-row>
+    </mat-table>
+  </div>
+
+  <div right>
+    <app-file-form (cancel)="onCancel()"></app-file-form>
+  </div>
+</app-wrapper>
