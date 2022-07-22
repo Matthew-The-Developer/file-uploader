@@ -14,8 +14,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - [x] Create a work item table action for file attachment
 - [x] Added a warning badge and tooltip to the file attachment table action for records missing documents
 - [x] Create a transplant demo page
-- [ ] Create a mock transplant work item
-- [ ] Migrate the document attachment modal to this project
+- [x] Create a mock transplant work item
+- [x] Migrate the document attachment modal to this project
+- [x] Create a live connection between the modal and the transplant center card
 - [ ] Look into appending file select in the explorer instead of overwriting it
 
 ## Github Pages
