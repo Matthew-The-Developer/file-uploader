@@ -1,11 +1,86 @@
 <app-wrapper
+  [isOpen]="isOpen"
+  [leftWidth]="100"
+  [rightWidth]="66.5"
   title="Kidney Stone Transplant"
 >
   <div left>
+    <mat-card class="mat-elevation-z0 outline">
+      <mat-card-title-group>
+        <mat-card-title class="mat-h2 champions">Transplant Champions</mat-card-title>
+        <mat-card-subtitle>
+          <mat-chip-list>
+            <mat-chip>
+              <img matChipAvatar src="https://images.unsplash.com/photo-1642050923713-c48db6ea4bec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"/>
+              Jane Doe
+            </mat-chip>
+            <mat-chip>
+              <img matChipAvatar src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"/>
+              Mike Mikerson
+            </mat-chip>
+          </mat-chip-list>
+        </mat-card-subtitle>
+        
+        <div class="actions">
+          <mat-chip-list [selectable]="false">
+            <mat-chip disableRipple class="green">EPTS Score: 100%</mat-chip>
+          </mat-chip-list>
+  
+          <button mat-stroked-button class="add">
+            <mat-icon>add</mat-icon>
+            Add Transplant Center
+          </button>
+        </div>
+      </mat-card-title-group>
+    </mat-card>
 
+    <mat-card *ngFor="let transplant of transplants" class="mat-elevation-z0 outline center">
+      <mat-card-header>
+        <button mat-fab color="primary" class="mat-elevation-z0 avatar" mat-card-avatar>
+          <mat-icon>apartment</mat-icon>
+        </button>
+        <mat-card-title>{{ transplant.centerName }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ latestStatus(transplant.statuses)?.name }} - Started {{ transplant.startedOn | date:'longDate' }}
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div>
+          <div *ngIf="transplant.activeTaskCount || transplant.incompleteTaskCount || transplant.overdueTaskCount || transplant.duesoonTaskCount || transplant.pendingTaskCount" class="tasks">
+            <p class="mat-caption label">Tasks</p>
+  
+            <mat-chip-list>
+              <mat-chip *ngIf="transplant.activeTaskCount && transplant.activeTaskCount > 0" class="active">{{ transplant.activeTaskCount }} Active</mat-chip>
+              <mat-chip *ngIf="transplant.incompleteTaskCount && transplant.incompleteTaskCount > 0" class="Incomplete">{{ transplant.incompleteTaskCount }} Incomplete</mat-chip>
+              <mat-chip *ngIf="transplant.overdueTaskCount && transplant.overdueTaskCount > 0" class="overdue">{{ transplant.overdueTaskCount }} Overdue</mat-chip>
+              <mat-chip *ngIf="transplant.duesoonTaskCount && transplant.duesoonTaskCount > 0" class="due-soon">{{ transplant.duesoonTaskCount }} Due Soon</mat-chip>
+              <mat-chip *ngIf="transplant.pendingTaskCount && transplant.pendingTaskCount > 0" class="pending">{{ transplant.pendingTaskCount }} Pending</mat-chip>
+            </mat-chip-list>
+          </div>
+
+          <button 
+            (click)="openDocumentModal(transplant)"
+            mat-button
+            [color]="transplant.documents && transplant.documents.length > 0 ? 'primary' : 'warn'"
+            class="documents"
+          >
+            {{ transplant.documents?.length }} Documents
+          </button>
+        </div>
+
+        <div>
+          <button (click)="open(transplant)" mat-stroked-button>
+            <mat-icon>edit</mat-icon>
+            Edit
+          </button>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
   </div>
 
   <div right>
-
+    <app-transplant-form (cancel)="onCancel()" [transplant]="selectedTransplant"></app-transplant-form>
   </div>
 </app-wrapper>

@@ -1,5 +1,6 @@
 interface MedicalDocument extends File {
   documentType: MedicalDocumentType;
+  attached: boolean;
 }
 
 enum MedicalDocumentType {

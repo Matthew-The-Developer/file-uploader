@@ -1,6 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MedicalDocument, MedicalDocumentType } from 'src/app/models/document.model';
+import { DocumentModalComponent } from 'src/app/shared/document-modal/document-modal.component';
 import { Column, KidneyCount } from './demographics.model';
 
 @Component({
@@ -8,7 +10,7 @@ import { Column, KidneyCount } from './demographics.model';
   templateUrl: './demographic.component.html',
   styleUrls: ['./demographic.component.scss']
 })
-export class DemographicComponent implements OnInit {
+export class DemographicComponent {
   columns: Column[] = [
     { name: 'side', label: 'Side', width: '10%' },
     { name: 'count', label: 'Count', width: '25%' },
@@ -31,8 +33,8 @@ export class DemographicComponent implements OnInit {
       hasDocuments: true,
     },
     {
-      side: 'Left',
-      count: 12,
+      side: 'Right',
+      count: 9,
       countedOn: new Date('7/20/2022'),
       countedBy: 'Nurse Granite',
       hasDocuments: true,
@@ -44,16 +46,10 @@ export class DemographicComponent implements OnInit {
   isOpen: boolean = false;
   actionsWidth: string = 'auto';
 
-  constructor() { }
-
-  ngOnInit(): void { }
+  constructor(public dialog: MatDialog) { }
 
   get names(): string[] {
     return [ ...this.columns.map(column => column.name), 'actions'];
-  }
-
-  get medicalDocumentTypes(): string[] {
-    return Object.values(MedicalDocumentType);
   }
 
   width(bias: string): string {
@@ -68,12 +64,13 @@ export class DemographicComponent implements OnInit {
     this.isOpen = false;
   }
 
-  onFilesSelected(): void {
-    const inputNode: any = document.querySelector('#uploader');
-
-    this.files = Array.from(inputNode.files);
-    this.files.forEach(file => file.documentType = MedicalDocumentType.DialysisTreatment);
-
-    console.log(this.files, this.medicalDocumentTypes);
+  openDocumentModal(): void {
+    this.dialog.open(DocumentModalComponent, {
+      height: 'auto',
+      width: '820px',
+      panelClass: 'document-uploader-dialog-container',
+      autoFocus: false,
+      hasBackdrop: false,
+    });
   }
 }

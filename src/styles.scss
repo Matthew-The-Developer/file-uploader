@@ -107,3 +107,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .example-tooltip-red {
   background: #b71c1c;
 }
+
+.document-uploader-dialog-container {
+  .mat-dialog-container {
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+.mat-list-base .mat-list-item.file .mat-list-item-content {
+  padding: 0;
+}
+
+.avatar {
+  span.mat-button-wrapper {
+    padding: 0;
+  }
+}
