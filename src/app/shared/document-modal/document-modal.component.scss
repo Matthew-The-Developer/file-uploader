@@ -1,10 +1,15 @@
 mat-card {
   padding: 0 0 24px 0;
+  border-radius: 0;
 
   mat-toolbar {
-    height: 56px;
-    border-radius: 4px 4px 8px 8px;
+    height: 36px;
+    padding-right: unset;
     cursor: grab;
+
+    .mat-subheading-1 {
+      margin-bottom: unset;
+    }
   }
 
   mat-card-content {
