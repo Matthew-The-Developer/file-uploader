@@ -1,0 +1,27 @@
+mat-card {
+  padding: 0;
+  border-radius: 0;
+
+  mat-toolbar {
+    height: 36px;
+    padding-right: unset;
+
+    .mat-subheading-1 {
+      margin-bottom: unset;
+    }
+  }
+
+  mat-card-content {
+    max-height: 90vh;
+    max-width: 80vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+
+      margin-bottom: -5px;
+    }
+  }
+}

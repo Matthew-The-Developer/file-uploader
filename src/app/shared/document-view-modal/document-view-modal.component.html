@@ -1,0 +1,15 @@
+<mat-card>
+  <mat-toolbar color="primary">
+    <span class="mat-subheading-1">{{ document?.name }}</span>
+
+    <span spacer></span>
+
+    <button mat-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-card-content>
+    <img *ngIf="url" [src]="url" [alt]="document?.name">
+  </mat-card-content>  
+</mat-card>

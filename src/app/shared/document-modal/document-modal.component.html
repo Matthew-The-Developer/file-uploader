@@ -34,7 +34,10 @@
     <mat-list>
       <mat-list-item *ngFor="let file of files" class="file">
         <div mat-line>
-          <span class="name">{{ file.name }}</span>
+          <div class="name">
+            <a (click)="openViewDocument(file)" class="name">{{ file.name }}</a>
+          </div>
+          
           
           <button [matMenuTriggerFor]="menu" mat-button>
             {{ file.documentType }}

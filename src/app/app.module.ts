@@ -17,6 +17,7 @@ import { DatePipe } from '@angular/common';
 import { FileFormComponent } from './pages/demographic/file-form/file-form.component';
 import { DocumentModalComponent } from './shared/document-modal/document-modal.component';
 import { TransplantFormComponent } from './pages/transplant/transplant-form/transplant-form.component';
+import { DocumentViewModalComponent } from './shared/document-view-modal/document-view-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TransplantFormComponent } from './pages/transplant/transplant-form/tran
     DynamicPipe,
     FileFormComponent,
     DocumentModalComponent,
-    TransplantFormComponent
+    TransplantFormComponent,
+    DocumentViewModalComponent
   ],
   imports: [
     BrowserModule,

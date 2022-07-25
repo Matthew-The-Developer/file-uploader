@@ -116,6 +116,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
 }
 
+.document-viewer-dialog-container {
+  .mat-dialog-container {
+    border-radius: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
 .mat-list-base .mat-list-item.file .mat-list-item-content {
   padding: 0;
 }

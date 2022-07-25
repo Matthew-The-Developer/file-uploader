@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MedicalDocument, MedicalDocumentType } from 'src/app/models/document.model';
+import { DocumentViewModalComponent } from '../document-view-modal/document-view-modal.component';
 
 export interface DialogData {
   documents: MedicalDocument[];
@@ -19,7 +20,8 @@ export class DocumentModalComponent implements OnInit, OnChanges {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private dialogRef: MatDialogRef<DocumentModalComponent>
+    private dialogRef: MatDialogRef<DocumentModalComponent>,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -69,7 +71,7 @@ export class DocumentModalComponent implements OnInit, OnChanges {
     this.dialogRef.close(this.files);
   }
 
-  onFilesSelected(event: any): void {
+  onFilesSelected(event: any): void {    
     if (event.target.files.length > 0) {
       this.files = Array.from(event.target.files);
       this.files.forEach(file => file.documentType = MedicalDocumentType.DialysisTreatment);
@@ -78,5 +80,13 @@ export class DocumentModalComponent implements OnInit, OnChanges {
 
       event.target.value = null;
     }
+  }
+
+  openViewDocument(document: MedicalDocument): void {
+    this.dialog.open(DocumentViewModalComponent, {
+      panelClass: 'document-viewer-dialog-container',
+      autoFocus: false,
+      data: document
+    });
   }
 }
