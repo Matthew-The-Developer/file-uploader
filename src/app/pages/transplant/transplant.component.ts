@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MedicalDocument } from 'src/app/models/document.model';
 import { DocumentModalComponent } from 'src/app/shared/document-modal/document-modal.component';
-import { KidneyTransfer, TransplantStatus } from './transplant.model';
+import { KidneyTransfer, TransplantStatus, TransplantStatusState } from './transplant.model';
 
 
 @Component({
@@ -17,47 +17,58 @@ export class TransplantComponent {
       statuses: [
         {
           name: 'Patient Declines Referral',
-          icon: 'thumb_down'
+          icon: 'thumb_down',
+          state: TransplantStatusState.Incomplete
         },
         {
           name: 'Presently Non-Modifiable Condition',
-          icon: 'masks'
+          icon: 'masks',
+          state: TransplantStatusState.Incomplete
         },
         {
           name: 'Referral Not Made',
-          icon: 'speaker_notes_off'
+          icon: 'speaker_notes_off',
+          state: TransplantStatusState.Incomplete
         },
         {
           name: 'Referral made, not yet evaluated',
-          icon: 'speaker_notes'
+          icon: 'speaker_notes',
+          state: TransplantStatusState.Complete
         },
         {
           name: 'Active',
-          icon: 'speaker_notes'
+          icon: 'bolt',
+          state: TransplantStatusState.Complete
         },
         {
           name: 'Patient Discontinued',
-          icon: 'person_off'
+          icon: 'person_off',
+          state: TransplantStatusState.Incomplete,
         },
         {
           name: 'Permanently Removed',
-          icon: 'block'
+          icon: 'block',
+          state: TransplantStatusState.Incomplete
         },
         {
           name: 'Referral Declined By Center',
-          icon: 'thumb_down'
+          icon: 'thumb_down',
+          state: TransplantStatusState.Incomplete
         },
         {
           name: 'Referred Evaluation In Progress',
-          icon: 'forum'
+          icon: 'forum',
+          state: TransplantStatusState.Complete
         },
         {
           name: 'Temporarily Inactive',
-          icon: 'pause'
+          icon: 'pause',
+          state: TransplantStatusState.Incomplete
         },
         {
           name: 'Transplanted',
-          icon: 'auto_awesome'
+          icon: 'auto_awesome',
+          state: TransplantStatusState.Transplanted
         },
       ],
       startedOn: this.addDays(-(Math.floor(Math.random() * (420 - 23 + 1)) + 23)),

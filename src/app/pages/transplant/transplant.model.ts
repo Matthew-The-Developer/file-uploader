@@ -16,6 +16,14 @@ interface KidneyTransfer {
 interface TransplantStatus {
   name: string;
   icon: string;
+  state: TransplantStatusState
 }
 
-export { KidneyTransfer, TransplantStatus };
+enum TransplantStatusState {
+  Complete = 'status-complete',
+  Incomplete = 'status-incomplete',
+  Active = 'status-active',
+  Transplanted = 'status-transplanted'
+}
+
+export { KidneyTransfer, TransplantStatus, TransplantStatusState };

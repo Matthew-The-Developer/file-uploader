@@ -18,6 +18,7 @@ import { FileFormComponent } from './pages/demographic/file-form/file-form.compo
 import { DocumentModalComponent } from './shared/document-modal/document-modal.component';
 import { TransplantFormComponent } from './pages/transplant/transplant-form/transplant-form.component';
 import { DocumentViewModalComponent } from './shared/document-view-modal/document-view-modal.component';
+import { StatusComponent } from './shared/status/status.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DocumentViewModalComponent } from './shared/document-view-modal/documen
     FileFormComponent,
     DocumentModalComponent,
     TransplantFormComponent,
-    DocumentViewModalComponent
+    DocumentViewModalComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
