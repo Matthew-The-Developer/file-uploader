@@ -19,6 +19,8 @@ import { DocumentModalComponent } from './shared/document-modal/document-modal.c
 import { TransplantFormComponent } from './pages/transplant/transplant-form/transplant-form.component';
 import { DocumentViewModalComponent } from './shared/document-view-modal/document-view-modal.component';
 import { StatusComponent } from './shared/status/status.component';
+import { ContainerDirective } from './shared/directives/container.directive';
+import { TransplantCenterComponent } from './pages/transplant/transplant-center/transplant-center.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { StatusComponent } from './shared/status/status.component';
     DocumentModalComponent,
     TransplantFormComponent,
     DocumentViewModalComponent,
-    StatusComponent
+    StatusComponent,
+    ContainerDirective,
+    TransplantCenterComponent
   ],
   imports: [
     BrowserModule,

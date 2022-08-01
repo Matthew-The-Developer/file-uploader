@@ -1,1 +1,28 @@
-<p>status works!</p>
+<div container class="status-history">
+  <ng-container *ngIf="hiddenStatusCount > 0">
+    <button
+      class="mat-elevation-z0 text"
+      color="primary"
+      mat-mini-fab
+    >
+      <span class="mat-body">+{{ hiddenStatusCount }}</span>
+    </button>
+
+    <mat-divider></mat-divider>
+  </ng-container>
+
+  <ng-container *ngFor="let status of visibleStatuses; let last = last">
+    <button 
+      [matTooltip]="status.name"
+      [ngClass]="status.state"
+      class="mat-elevation-z0"
+      mat-mini-fab
+    >
+      <mat-icon>{{ status.icon }}</mat-icon>
+    </button>
+
+    <mat-divider *ngIf="!last"></mat-divider>
+  </ng-container>
+
+  <button *ngIf="readonly" mat-button color="primary">Add a new Status</button>
+</div>

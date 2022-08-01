@@ -1,0 +1,64 @@
+.outline {
+  border: 1px solid lightgray;
+}
+
+.center {
+  margin-top: 16px;
+
+  mat-card-title {
+    margin: 0;
+  }
+
+  mat-card-subtitle {
+    margin: 0;
+  }
+
+  mat-card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .center-divider {
+    width: 100%;
+
+    margin: 12px 0 0px;
+  }
+
+  .tasks {
+    margin-top: 12px;
+    
+    .label {
+      margin: 0;
+    }
+
+    .active {
+      background-color: #f5eb89;
+    }
+    .overdue {
+      background-color: #d32f2f;
+      color: white;
+    }
+    .pending {
+      background-color: #43ccf7;
+      color: white;
+    }
+    .completed {
+      background-color: #5cb85c;
+      color: white;
+    }
+    .skipped {
+      background-color: #6c757d;
+      color: white;
+    }
+    .due-soon {
+      background-color: #ffa500;
+      color: white;
+    }
+  }
+
+  .documents {
+    margin-top: 12px;
+  }
+}

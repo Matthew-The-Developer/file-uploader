@@ -133,3 +133,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 0;
   }
 }
+
+button.mat-mini-fab.text {
+  .mat-button-wrapper {
+    padding: 3px;
+    vertical-align: top;
+  }
+}

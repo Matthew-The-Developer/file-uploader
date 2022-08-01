@@ -1,0 +1,40 @@
+.status-history {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  button.mat-mini-fab {
+    width: 32px;
+    height: 32px;
+    
+    .mat-button-wrapper {
+      padding: 0;
+    }
+
+    mat-icon {
+      font-size: 100%;
+    }
+  }
+
+  mat-divider {
+    width: 24px;
+  }
+}
+
+.status-complete {
+  background-color: #5cb85c;
+}
+
+.status-incomplete {
+  background-color: #6c757d;
+}
+
+.status-active {
+  background-color: #f5eb89;
+}
+
+.status-transplanted {
+  background: rgb(67,204,247);
+  background: linear-gradient(45deg, rgba(67,204,247,1) 0%, rgba(92,184,92,1) 100%);
+}
+

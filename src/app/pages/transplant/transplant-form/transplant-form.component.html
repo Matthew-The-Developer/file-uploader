@@ -1,5 +1,5 @@
 <mat-card class="base mat-elevation-z0">
-  <mat-card-header>
+  <mat-card-header container>
     <button mat-fab color="primary" class="mat-elevation-z0 avatar" mat-card-avatar>
       <mat-icon>apartment</mat-icon>
     </button>
@@ -7,17 +7,7 @@
     <mat-card-subtitle>
       <span>{{ latestStatus(transplant?.statuses)?.name }} - Started {{ transplant?.startedOn | date:'longDate' }}</span>
 
-      <div class="status-history">
-        <ng-container *ngFor="let status of transplant?.statuses; let last = last">
-          <button mat-mini-fab [matTooltip]="status.name" class="mat-elevation-z0">
-            <mat-icon>{{ status.icon }}</mat-icon>
-          </button>
-  
-          <mat-divider *ngIf="!last"></mat-divider>
-        </ng-container>
-
-        <button mat-button color="primary">Add a new Status</button>
-      </div>
+      <app-status [statuses]="transplant?.statuses || []" [width]="headerWidth"></app-status>
     </mat-card-subtitle>
   </mat-card-header>
 

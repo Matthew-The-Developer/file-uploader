@@ -1,0 +1,45 @@
+<mat-card class="mat-elevation-z0 outline center">
+  <mat-card-header container>
+    <button mat-fab color="primary" class="mat-elevation-z0 avatar" mat-card-avatar>
+      <mat-icon>apartment</mat-icon>
+    </button>
+    <mat-card-title>{{ center.centerName }}</mat-card-title>
+    <mat-card-subtitle>
+      <span>{{ latestStatus(center.statuses).name }} - Started {{ center.startedOn | date:'longDate' }}</span>
+
+      <app-status [statuses]="center.statuses || []" [viewableCount]="5" [width]="centerWidth"></app-status>
+    </mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <div>
+      <div *ngIf="center.activeTaskCount || center.incompleteTaskCount || center.overdueTaskCount || center.duesoonTaskCount || center.pendingTaskCount" class="tasks">
+        <p class="mat-caption label">Tasks</p>
+
+        <mat-chip-list>
+          <mat-chip *ngIf="center.activeTaskCount && center.activeTaskCount > 0" class="active">{{ center.activeTaskCount }} Active</mat-chip>
+          <mat-chip *ngIf="center.incompleteTaskCount && center.incompleteTaskCount > 0" class="Incomplete">{{ center.incompleteTaskCount }} Incomplete</mat-chip>
+          <mat-chip *ngIf="center.overdueTaskCount && center.overdueTaskCount > 0" class="overdue">{{ center.overdueTaskCount }} Overdue</mat-chip>
+          <mat-chip *ngIf="center.duesoonTaskCount && center.duesoonTaskCount > 0" class="due-soon">{{ center.duesoonTaskCount }} Due Soon</mat-chip>
+          <mat-chip *ngIf="center.pendingTaskCount && center.pendingTaskCount > 0" class="pending">{{ center.pendingTaskCount }} Pending</mat-chip>
+        </mat-chip-list>
+      </div>
+
+      <button 
+        (click)="attachFile(center)"
+        mat-stroked-button
+        [color]="center.documents && center.documents.length > 0 ? 'primary' : 'warn'"
+        class="documents"
+      >
+        {{ center.documents?.length }} Documents
+      </button>
+    </div>
+
+    <div>
+      <button (click)="open(center)" mat-stroked-button>
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

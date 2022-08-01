@@ -8,29 +8,6 @@ mat-card.base {
 
     mat-card-subtitle {
       margin: 0;
-      
-      .status-history {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-  
-        button.mat-mini-fab {
-          width: 32px;
-          height: 32px;
-          
-          .mat-button-wrapper {
-            padding: 0;
-          }
-
-          mat-icon {
-            font-size: 100%;
-          }
-        }
-  
-        mat-divider {
-          width: 24px;
-        }
-      }
     }
   }
 
@@ -58,7 +35,7 @@ mat-card.base {
       padding: 8px;
   
       .example-header-image {
-        background-image: url('/assets/inigo-montoya.jpg');
+        background-image: url('https://raw.githubusercontent.com/Matthew-The-Developer/file-uploader/master/src/assets/inigo-montoya.jpg');
         background-position: center center;
         background-size: cover;
       }
