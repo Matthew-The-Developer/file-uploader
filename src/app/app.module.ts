@@ -21,6 +21,8 @@ import { DocumentViewModalComponent } from './shared/document-view-modal/documen
 import { StatusComponent } from './shared/status/status.component';
 import { ContainerDirective } from './shared/directives/container.directive';
 import { TransplantCenterComponent } from './pages/transplant/transplant-center/transplant-center.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { DocumentViewLinkComponent } from './shared/document-view-link/document-view-link.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { TransplantCenterComponent } from './pages/transplant/transplant-center/
     DocumentViewModalComponent,
     StatusComponent,
     ContainerDirective,
-    TransplantCenterComponent
+    TransplantCenterComponent,
+    DocumentViewLinkComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { TransplantCenterComponent } from './pages/transplant/transplant-center/
     BrowserAnimationsModule,
     DragDropModule,
     MaterialModule,
+    PdfViewerModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

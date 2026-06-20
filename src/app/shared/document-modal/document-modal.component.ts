@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SecurityContext, SimpleChanges } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MedicalDocument, MedicalDocumentType } from 'src/app/models/document.model';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { DocumentExtensions, MedicalDocument, MedicalDocumentType } from 'src/app/models/document.model';
 import { DocumentViewModalComponent } from '../document-view-modal/document-view-modal.component';
 
 export interface DialogData {
@@ -17,11 +19,12 @@ export class DocumentModalComponent implements OnInit, OnChanges {
   @Output() documentsChange = new EventEmitter<MedicalDocument[]>();
   
   files: MedicalDocument[] = [];
+  documentExtensions = DocumentExtensions;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private dialogRef: MatDialogRef<DocumentModalComponent>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +37,10 @@ export class DocumentModalComponent implements OnInit, OnChanges {
   
   get medicalDocumentTypes(): string[] {
     return Object.values(MedicalDocumentType);
+  }
+
+  isDocument(document: MedicalDocument): boolean {
+    return DocumentExtensions.has(document.extension);
   }
 
   setDocumentType(file: MedicalDocument, type: string): void {
@@ -74,7 +81,14 @@ export class DocumentModalComponent implements OnInit, OnChanges {
   onFilesSelected(event: any): void {    
     if (event.target.files.length > 0) {
       this.files = Array.from(event.target.files);
-      this.files.forEach(file => file.documentType = MedicalDocumentType.DialysisTreatment);
+      
+      this.files.forEach(file => {
+        file.documentType = MedicalDocumentType.DialysisTreatment;
+        
+        const splitName = file.name.split('.');
+        const extension = `.${splitName[splitName.length - 1]}`;
+        file.extension = extension;
+      });
 
       console.log(this.files);
 

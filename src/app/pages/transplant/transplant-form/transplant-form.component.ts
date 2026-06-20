@@ -18,7 +18,6 @@ export class TransplantFormComponent implements AfterViewInit {
     const observer = new ResizeObserver(entries => {
       entries.forEach(entry => {
         this.headerWidth = Math.floor(entry.contentRect.width);
-        console.log("width", this.headerWidth);
       });
     });
 

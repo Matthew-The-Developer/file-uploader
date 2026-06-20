@@ -1,6 +1,6 @@
 <mat-card>
   <mat-toolbar color="primary">
-    <span class="mat-subheading-1">{{ document?.name }}</span>
+    <span class="mat-subheading-1">{{ document.name }}</span>
 
     <span spacer></span>
 
@@ -10,6 +10,27 @@
   </mat-toolbar>
 
   <mat-card-content>
-    <img *ngIf="url" [src]="url" [alt]="document?.name">
+    <ng-container *ngIf="imageExtensions.has(document.extension)">
+      <img *ngIf="url" [src]="url" [alt]="document.name">
+    </ng-container>
+
+    <ng-container *ngIf="pdfExtensions.has(document.extension)">
+      <pdf-viewer
+        [src]="url"
+        [rotation]="0"
+        [original-size]="true"
+        [show-all]="true"
+        [fit-to-page]="false"
+        [zoom]="1"
+        [zoom-scale]="'page-width'"
+        [stick-to-page]="false"
+        [render-text]="true"
+        [external-link-target]="'blank'"
+        [autoresize]="true"
+        [show-borders]="false"
+        style="width: 70vw; height: 90vh;"
+      ></pdf-viewer>
+    </ng-container>
+
   </mat-card-content>  
 </mat-card>

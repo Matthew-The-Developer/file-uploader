@@ -21,7 +21,6 @@ export class TransplantCenterComponent implements AfterViewInit {
     const observer = new ResizeObserver(entries => {
       entries.forEach(entry => {
         this.centerWidth = Math.floor(entry.contentRect.width);
-        console.log("width", this.centerWidth);
       });
     });
 

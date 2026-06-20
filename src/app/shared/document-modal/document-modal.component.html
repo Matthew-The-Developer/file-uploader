@@ -35,7 +35,13 @@
       <mat-list-item *ngFor="let file of files" class="file">
         <div mat-line>
           <div class="name">
-            <a (click)="openViewDocument(file)" class="name">{{ file.name }}</a>
+            <ng-container *ngIf="isDocument(file); else notDocument">
+              <app-document-view-link [document]="file"></app-document-view-link>
+            </ng-container>
+            
+            <ng-template #notDocument>
+              <a (click)="openViewDocument(file)" class="name">{{ file.name }}</a>
+            </ng-template>
           </div>
           
           
